@@ -5,13 +5,14 @@ import asyncio
 from discord.utils import get
 from Token import DISCORD_TOKEN
 from discord.ext.commands import Bot
+from datetime import datetime
 
 BOT_PREFIX = ","
 
 
 TOKEN = DISCORD_TOKEN
 print(TOKEN)
-
+alarm_time = '11:59'
 client = Bot(command_prefix=BOT_PREFIX)
 
 
