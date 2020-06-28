@@ -12,7 +12,7 @@ BOT_PREFIX = ","
 
 TOKEN = DISCORD_TOKEN
 print(TOKEN)
-alarm_time = '11:59'
+alarm_time = '11:42'
 client = Bot(command_prefix=BOT_PREFIX)
 
 
@@ -40,8 +40,7 @@ async def eight_ball(ctx):
     ]
     await ctx.send(random.choice(possible_responses) + ", " + ctx.message.author.mention)
 
-
-<<<<<<< HEAD
+#Time check function. Causes simp of the day when it is mid day
 async def time_check():
     await client.wait_until_ready()
     while not client.is_closed:
@@ -57,9 +56,7 @@ async def time_check():
         await asyncio.sleep(time)
 
 
-=======
 #ping pong, all there really is.
->>>>>>> 7e5b1950ecf4127643868248eef3805e7025655c
 @client.command(name='ping',
                 pass_context=True)
 async def ping(ctx):
@@ -81,5 +78,6 @@ async def on_message(message):
                    await message.add_reaction(emoji)
     await client.process_commands(message)
 
+client.loop.create_task(time_check())
 
 client.run(TOKEN)
