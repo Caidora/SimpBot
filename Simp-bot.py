@@ -6,7 +6,7 @@ from discord.utils import get
 from Token import DISCORD_TOKEN
 from discord.ext.commands import Bot
 from datetime import datetime
-
+from random import choice
 BOT_PREFIX = ","
 
 
@@ -37,6 +37,21 @@ async def eight_ball(ctx):
 
     ]
     await ctx.send(random.choice(possible_responses) + ", " + ctx.message.author.mention)
+
+
+async def time_check():
+    await client.wait_until_ready()
+    while not client.is_closed:
+        now = datetime.strftime(datetime.now(), '%H:%M')
+        channel = client.get_channel(channel_id)
+        messages = ('Test')
+        guild = discord.utils.find(lambda g: g.name == 'Trap Nation', client.guilds)
+        if now == alarm_time:
+           user = choice(channel.guild.members)
+           await channel.send(f'{test}')
+        else:
+           time = 1
+        await asyncio.sleep(time)
 
 
 @client.command(name='ping',
