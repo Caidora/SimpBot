@@ -2,6 +2,7 @@ import os
 import discord
 import random
 import asyncio
+from discord.ext import tasks
 from discord.utils import get
 from Token import DISCORD_TOKEN
 from discord.ext.commands import Bot
@@ -11,8 +12,7 @@ BOT_PREFIX = ","
 
 
 TOKEN = DISCORD_TOKEN
-print(TOKEN)
-alarm_time = '11:42'
+alarm_time = '12:01'
 client = Bot(command_prefix=BOT_PREFIX)
 
 
@@ -43,9 +43,10 @@ async def eight_ball(ctx):
 #Time check function. Causes simp of the day when it is mid day
 async def time_check():
     await client.wait_until_ready()
+    print(f"got here faggot")
     while not client.is_closed:
         now = datetime.strftime(datetime.now(), '%H:%M')
-        channel = client.get_channel(channel_id)
+        channel = discord.utils.get(guild.channels, name="general")
         messages = ('Test')
         guild = discord.utils.find(lambda g: g.name == 'Trap Nation', client.guilds)
         if now == alarm_time:
@@ -53,6 +54,7 @@ async def time_check():
            await channel.send(f'{test}')
         else:
            time = 1
+           print(f'got here now')
         await asyncio.sleep(time)
 
 
